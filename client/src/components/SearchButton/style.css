@@ -1,0 +1,8 @@
+.searchButton {
+    float: right;
+    background: white;
+    color: royalblue;
+    padding: 10px;
+    border-radius: 10%;
+    cursor: pointer;
+}

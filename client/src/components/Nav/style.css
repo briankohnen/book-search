@@ -1,0 +1,22 @@
+.navi {
+    background: rgb(58, 223, 214);
+    border-bottom: 1px solid navy;
+    padding: 10px;
+    box-shadow: 0px 1px 5px whitesmoke;
+    margin-bottom: 15px;
+}
+.links {
+    max-width: 25%;
+    display: flex;
+    justify-content: space-around;
+}
+.navLink {
+    font-size: 20px;
+    text-decoration: none;
+    color: black;
+    background: rgb(58, 223, 214);
+    padding: 10px;
+    border-radius: 10%;
+    border: 1px solid white;
+    box-shadow: -1px 0px 5px gray;
+}

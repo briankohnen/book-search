@@ -1,0 +1,30 @@
+.bookInfo {
+    margin: 0 auto;
+    width: 95%;
+    padding: 0px 20px 20px;
+    background: white;
+    margin-bottom: 5px;
+    overflow: auto;
+}
+.topSection {
+    width: 95%;
+    max-height: 75px;
+}
+.buttons {
+    position: relative;
+    top: -100px;
+    right: -90%;
+    width: 15%;
+    display: flex;
+    justify-content: space-between;
+}
+.botSection {
+    display: block;
+    width: 95%;
+}
+img {
+    height: 175px;
+    width: 150px;
+    float: left;
+    margin-right: 25px;
+}

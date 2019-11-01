@@ -1,0 +1,9 @@
+.wrapper {
+    margin: 0 auto;
+    width: 85%;
+    padding: 25px;
+    /* display: flex;
+    justify-content: center; */
+    background: lightskyblue;
+    margin-bottom: 15px;
+}

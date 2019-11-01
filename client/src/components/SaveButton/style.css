@@ -1,0 +1,8 @@
+.saveButton {
+    float: right;
+    background: royalblue;
+    color: white;
+    padding: 10px;
+    border-radius: 10%;
+    cursor: pointer;
+}
