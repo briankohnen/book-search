@@ -3,9 +3,11 @@ import './style.css';
 
 function ViewButton(props) {
   return (
-    <span className='viewButton' href='/' id={props.link}>
-        View
-    </span>
+    <a {...props}>
+      <span className='viewButton'>
+          View
+      </span>
+    </a>
   );
 }
 

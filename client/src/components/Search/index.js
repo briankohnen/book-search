@@ -6,8 +6,9 @@ function Search(props) {
   return (
     <div className='wrapper'>
         <h3>Book Search</h3>
-        <input placeholder='Search for books by name or by author' {...props}></input>
-        <SearchButton />
+        <input placeholder='Search for books by name or by author' value={props.value}
+        name={props.name} onChange={props.onChange}></input>
+        <SearchButton onClick={props.onClick}/>
     </div>
   );
 }

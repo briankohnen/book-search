@@ -11,7 +11,7 @@ function Nav() {
         <a className='navLink' href='/'>
             Search
         </a>
-        <a className='navLink' href='/'>
+        <a className='navLink' href='/saved'>
             Saved
         </a>
         </nav>

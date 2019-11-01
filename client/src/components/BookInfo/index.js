@@ -8,10 +8,10 @@ function BookInfo(props) {
     <div className='bookInfo'>
         <section className='topSection'>
             <h2>{props.title}</h2>
-            <h3>{props.author}</h3>
+            <h3>{props.author.length === 1 ? props.author : props.author.join(', ')}</h3>
             <div className='buttons'>
-                <ViewButton />
-                <SaveButton />
+                <ViewButton href={props.link} />
+                <SaveButton onClick={props.onClick} />
             </div>
         </section>
         <section className='botSection'>
