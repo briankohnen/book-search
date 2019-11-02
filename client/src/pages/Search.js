@@ -16,19 +16,7 @@ class SearchBooks extends Component {
     image: '',
     link: ''
   };
-
-  // componentDidMount() {
-  //   this.loadBooks();
-  // };
-
-  // loadBooks = () => {
-  //   API.getBooks()
-  //     .then(res =>
-  //       this.setState({ books: res.data, searching: '' })
-  //     )
-  //     .catch(err => console.log(err));
-  // };
-
+  
   handleInputChange = event => {
     const { name, value } = event.target;
     this.setState({
@@ -40,32 +28,37 @@ class SearchBooks extends Component {
     event.preventDefault();
     if (this.state.searching) {
         axios.get("https://www.googleapis.com/books/v1/volumes?q=" + this.state.searching)
-        .then(res => {
-            this.setState({books: res.data.items, searching: ''})
-            console.log(res.data.items);
+        .then(resp => {
+          API.getBooks().then(res => {
+            if (res.data.length !== 0) {
+              let newResp = [];
+              for (var i = 0; i < res.data.length; i++) {
+                newResp = resp.data.items.filter(book => book.volumeInfo.previewLink !== res.data[i].link);
+                console.log(res.data[i].link);
+              }
+              console.log(newResp);
+              this.setState({books: newResp, searching: ''});
+            } else {
+              this.setState({books: resp.data.items, searching: ''})
+            }
           })
           .catch(err => console.log(err));
+      });
     };
   };
 
   handleSave = event => {
       event.preventDefault();
       event.target.parentNode.parentNode.parentNode.style.display = 'none';
-      this.setState({
+      API.saveBook({
         title: event.target.parentNode.parentNode.children[0].innerHTML,
         authors: event.target.parentNode.parentNode.children[1].innerHTML,
         description: event.target.parentNode.parentNode.parentNode.children[1].children[1].innerHTML,
         image: event.target.parentNode.parentNode.parentNode.children[1].children[0].src,
         link: event.target.parentNode.children[0].href
-      });
-      API.saveBook({
-        title: this.state.title,
-        authors: this.state.authors,
-        description: this.state.description,
-        image: this.state.image,
-        link: this.state.link
-      }).then(res => console.log('swhip'))
-        .catch(err => console.log(err));
+      }).then(res => {
+        console.log('saved');
+      }).catch(err => console.log(err));
   }
 
   render() {
@@ -82,7 +75,8 @@ class SearchBooks extends Component {
             author={book.volumeInfo.authors} 
             image={book.volumeInfo.imageLinks.smallThumbnail}
             summary={book.volumeInfo.description} 
-            link={book.volumeInfo.previewLink} 
+            link={book.volumeInfo.previewLink}
+            search={true} 
             onClick={this.handleSave} /> 
             :
             <></>

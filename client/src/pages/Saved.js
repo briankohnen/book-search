@@ -22,10 +22,15 @@ class SavedBooks extends Component {
     });
   };
 
-  handleInputChange = event => {
-    const { name, value } = event.target;
-    this.setState({
-      [name]: value
+  handleDelete = event => {
+    event.preventDefault();
+    let whereToDelete = event.target.getAttribute('id');
+    console.log(whereToDelete);
+    API.deleteBook(whereToDelete).then(res => {
+      console.log('deleted');
+      this.loadBooks();
+    }).catch(err => {
+      console.log(err);
     });
   };
 
@@ -36,13 +41,15 @@ class SavedBooks extends Component {
     <BooksContainer containerHead='Saved'>
         {this.state.books.map(book=> (
             <BookInfo 
-            key={book._id} 
+            key={book._id}
+            id={book._id}
             title={book.title} 
             author={book.authors} 
             image={book.image}
             summary={book.description} 
-            link={book.link} 
-            // onClick={this.handleSave} 
+            link={book.link}
+            search={false} 
+            onClick={this.handleDelete} 
             />
         ))}
     </BooksContainer>

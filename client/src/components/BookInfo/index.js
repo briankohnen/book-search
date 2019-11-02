@@ -2,6 +2,7 @@ import React from "react";
 import './style.css';
 import ViewButton from '../ViewButton';
 import SaveButton from '../SaveButton';
+import DeleteButton from '../DeleteButton';
 
 function BookInfo(props) {
   return (
@@ -11,7 +12,10 @@ function BookInfo(props) {
             <h3>{props.author.length === 1 ? props.author : props.author.join(', ')}</h3>
             <div className='buttons'>
                 <ViewButton href={props.link} />
-                <SaveButton onClick={props.onClick} />
+                {props.search ? 
+                  <SaveButton onClick={props.onClick} /> :
+                  <DeleteButton onClick={props.onClick} id={props.id}/>
+                }
             </div>
         </section>
         <section className='botSection'>
