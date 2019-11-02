@@ -31,12 +31,14 @@ class SearchBooks extends Component {
         .then(resp => {
           API.getBooks().then(res => {
             if (res.data.length !== 0) {
-              let newResp = [];
+              let newResp = resp.data.items;
               for (var i = 0; i < res.data.length; i++) {
-                newResp = resp.data.items.filter(book => book.volumeInfo.previewLink !== res.data[i].link);
-                console.log(res.data[i].link);
+                for (var j = 0; j < resp.data.items.length; j++) {
+                  if (resp.data.items[j].volumeInfo.previewLink === res.data[i].link) {
+                    newResp = newResp.filter(book => book.volumeInfo.previewLink !== res.data[i].link);
+                  }
+                }
               }
-              console.log(newResp);
               this.setState({books: newResp, searching: ''});
             } else {
               this.setState({books: resp.data.items, searching: ''})
@@ -67,20 +69,23 @@ class SearchBooks extends Component {
     <Header />
     <Search value={this.state.searching} name='searching' onChange={this.handleInputChange} onClick={this.handleSearch} />
     <BooksContainer containerHead='Results'>
-        {this.state.books.map(book=> (
+        {this.state.books.length !== 0 ? 
+          this.state.books.map(book=> (
             (book.volumeInfo.description) ?
-            <BookInfo 
-            key={book.id} 
-            title={book.volumeInfo.title} 
-            author={book.volumeInfo.authors} 
-            image={book.volumeInfo.imageLinks.smallThumbnail}
-            summary={book.volumeInfo.description} 
-            link={book.volumeInfo.previewLink}
-            search={true} 
-            onClick={this.handleSave} /> 
-            :
-            <></>
-        ))}
+              <BookInfo 
+              key={book.id} 
+              title={book.volumeInfo.title} 
+              author={book.volumeInfo.authors} 
+              image={book.volumeInfo.imageLinks.smallThumbnail}
+              summary={book.volumeInfo.description} 
+              link={book.volumeInfo.previewLink}
+              search={true} 
+              onClick={this.handleSave} /> 
+              :
+              <></>
+          )) :
+          <></>
+        }
     </BooksContainer>
     </>
     );
