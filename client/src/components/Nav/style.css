@@ -1,8 +1,8 @@
 .navi {
-    background: rgb(58, 223, 214);
-    border-bottom: 1px solid navy;
+    background: #86C232;
+    border-bottom: 1px solid rgb(83, 121, 30);
     padding: 10px;
-    box-shadow: 0px 1px 5px whitesmoke;
+    box-shadow: 0px 1px 10px #494e52;
     margin-bottom: 15px;
 }
 .links {
@@ -14,9 +14,9 @@
     font-size: 20px;
     text-decoration: none;
     color: black;
-    background: rgb(58, 223, 214);
+    background: whitesmoke;
     padding: 10px;
     border-radius: 10%;
-    border: 1px solid white;
+    border: 1px solid #61892F;
     box-shadow: -1px 0px 5px gray;
 }

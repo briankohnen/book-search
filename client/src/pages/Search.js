@@ -84,7 +84,7 @@ class SearchBooks extends Component {
               :
               <></>
           )) :
-          <></>
+          <>'Nothing to show here... try searching for/saving some books!'</>
         }
     </BooksContainer>
     </>
