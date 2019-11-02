@@ -4,7 +4,7 @@ import BooksContainer from '../components/BooksContainer';
 import BookInfo from "../components/BookInfo";
 import API from "../utils/API";
 
-class SavedBooks extends Component {
+class Saved extends Component {
   state = {
     books: []
   };
@@ -15,7 +15,7 @@ class SavedBooks extends Component {
 
   loadBooks = () => {
     API.getBooks().then(res => {
-      alert("books")
+   
         this.setState({books: res.data});
       
         console.log(this.state.books);
@@ -60,4 +60,4 @@ class SavedBooks extends Component {
   };
 };
 
-export default SavedBooks;
+export default Saved;
