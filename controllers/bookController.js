@@ -20,5 +20,9 @@ module.exports = {
       .then(dbModel => dbModel.remove())
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
+  },
+  count: function(req, res) {
+    db.Book.countDocuments({}).then(books => res.json(books))
+    .catch(err => console.log(err))
   }
 };
