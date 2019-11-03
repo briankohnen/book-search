@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import './style.css';
 
 function Nav() {
@@ -8,12 +9,12 @@ function Nav() {
         <a className="navLink" href="https://books.google.com/">
             GoogleBooks
         </a>
-        <a className='navLink' href='/'>
+        <Link to='/' className='navLink'>
             Search
-        </a>
-        <a className='navLink' href='/saved'>
+        </Link>
+        <Link to='/saved' className='navLink'>
             Saved
-        </a>
+        </Link>
         </nav>
     </div>
   );
